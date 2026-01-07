@@ -1,0 +1,139 @@
+---
+const services = [
+  {
+    icon: "fa-tools",
+    title: "Profesjonalny Montaż",
+    description: "Czysta i szybka instalacja wykonana przez certyfikowanych monterów F-Gaz."
+  },
+  {
+    icon: "fa-heart-pulse",
+    title: "Serwis i Przeglądy",
+    description: "Regularne czyszczenie i odgrzybianie, które dba o Twoje zdrowie i wydajność sprzętu."
+  },
+  {
+    icon: "fa-lightbulb",
+    title: "Bezpłatne Doradztwo",
+    description: "Przyjeżdżamy na miejsce, mierzymy i dobieramy moc urządzenia idealnie do potrzeb."
+  }
+];
+---
+
+<style>
+  section {
+    padding: 5rem 0;
+    background-color: white;
+  }
+
+  .services-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .services-content h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .services-content > p {
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .service-item {
+    display: flex;
+  }
+
+  .service-icon {
+    flex-shrink: 0;
+    background-color: var(--color-blue-50);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-text {
+    margin-left: 1rem;
+  }
+
+  .service-text h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .service-text p {
+    color: var(--color-gray-500);
+  }
+
+  .services-image {
+    background-color: var(--color-gray-100);
+    border-radius: 1.5rem;
+    height: 24rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+  }
+
+  .services-image i {
+    font-size: 8rem;
+    color: var(--color-gray-300);
+  }
+</style>
+
+<section>
+  <div class="services-container">
+    <div class="services-grid">
+      <div class="services-content">
+        <h2>Kompleksowe usługi klimatyzacyjne</h2>
+        <p>Nie tylko sprzedajemy urządzenia. Zapewniamy pełne wsparcie techniczne, abyś mógł cieszyć się bezawaryjną pracą systemu przez lata.</p>
+        
+        <div class="services-list">
+          {services.map((service) => (
+            <div class="service-item">
+              <div class="service-icon">
+                <i class={`fa-solid ${service.icon}`}></i>
+              </div>
+              <div class="service-text">
+                <h4>{service.title}</h4>
+                <p>{service.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="services-image">
+        <i class="fa-solid fa-house-laptop"></i>
+      </div>
+    </div>
+  </div>
+</section>

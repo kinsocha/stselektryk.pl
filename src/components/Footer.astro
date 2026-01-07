@@ -1,0 +1,88 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Kontakt i Wycena",
+    description: "Dzwonisz do nas lub wypełniasz formularz. Umawiamy się na bezpłatną wizję lokalną."
+  },
+  {
+    number: "02",
+    title: "Szybki Montaż",
+    description: "Instalujemy urządzenie zazwyczaj w ciągu 1 dnia, dbając o porządek i estetykę."
+  },
+  {
+    number: "03",
+    title: "Pełen Komfort",
+    description: "Szkolimy Cię z obsługi pilota i aplikacji. Od teraz cieszysz się idealną temperaturą."
+  }
+];
+---
+
+<style>
+  section {
+    padding: 5rem 0;
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .process-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 768px) {
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step-number {
+    font-size: 3rem;
+    font-weight: 900;
+    opacity: 0.2;
+    margin-bottom: 1rem;
+  }
+
+  .step h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    color: rgba(219, 234, 254, 1);
+  }
+</style>
+
+<section>
+  <div class="process-container">
+    <h2>Twój nowy klimatyzator w 3 prostych krokach</h2>
+    <div class="steps-grid">
+      {steps.map((step) => (
+        <div class="step">
+          <div class="step-number">{step.number}</div>
+          <h4>{step.title}</h4>
+          <p>{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

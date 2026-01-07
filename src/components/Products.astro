@@ -1,0 +1,229 @@
+---
+const products = [
+  {
+    tag: "Opcja Ekonomiczna",
+    tagColor: "green",
+    name: "Gree Pular",
+    description: "Niezawodność w najlepszej cenie. Idealny do sypialni i mniejszych pokoi.",
+    features: ["Klasa energetyczna A++", "Cicha praca (od 21 dB)", "Sterowanie Wi-Fi"],
+    price: "2 499",
+    featured: false
+  },
+  {
+    tag: "Bestseller",
+    tagColor: "blue",
+    name: "Gree Amber Standard",
+    description: "Złoty środek między wydajnością a designem. Najlepszy wybór do salonu.",
+    features: ["Klasa energetyczna A+++", "Grzanie do -22°C", "Jonizator powietrza"],
+    price: "3 899",
+    featured: true
+  },
+  {
+    tag: "Klasa Premium",
+    tagColor: "purple",
+    name: "Gree Soyal",
+    description: "Futurystyczny wygląd i inteligentne czujniki ruchu. Dla najbardziej wymagających.",
+    features: ["Detekcja obecności osób", "Nawiew 3D", "Najwyższa energooszczędność"],
+    price: "5 299",
+    featured: false
+  }
+];
+---
+
+<style>
+  section {
+    padding: 5rem 0;
+    background-color: var(--color-gray-50);
+  }
+
+  .products-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .products-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .products-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .products-header p {
+    color: var(--color-gray-600);
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .products-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .product-card {
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid var(--color-gray-100);
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    padding: 2rem;
+  }
+
+  .product-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  }
+
+  .product-card.featured {
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    .product-card.featured {
+      transform: translateY(-1rem);
+    }
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-bottom-left-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .tag-green {
+    background-color: var(--color-green-100);
+    color: var(--color-green-700);
+  }
+
+  .tag-blue {
+    background-color: var(--color-blue-100);
+    color: var(--color-primary);
+  }
+
+  .tag-purple {
+    background-color: var(--color-purple-100);
+    color: var(--color-purple-700);
+  }
+
+  .product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .product-desc {
+    color: var(--color-gray-500);
+    margin-bottom: 1.5rem;
+  }
+
+  .features {
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-700);
+    margin-bottom: 0.75rem;
+  }
+
+  .feature i {
+    margin-right: 0.75rem;
+  }
+
+  .feature-green i { color: var(--color-green-500); }
+  .feature-blue i { color: var(--color-primary); }
+  .feature-purple i { color: var(--color-purple-500); }
+
+  .price {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: 1.5rem;
+  }
+
+  .price span {
+    font-size: 0.875rem;
+    color: var(--color-gray-400);
+    font-weight: 400;
+  }
+
+  .product-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 700;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .product-btn:hover,
+  .product-btn.filled {
+    background-color: var(--color-primary);
+    color: white;
+  }
+</style>
+
+<section id="wybor">
+  <div class="products-container">
+    <div class="products-header">
+      <h2>Ułatwiamy wybór: Znajdź model dla siebie</h2>
+      <p>Przygotowaliśmy zestawienie trzech najpopularniejszych modeli, aby pomóc Ci podjąć najlepszą decyzję.</p>
+    </div>
+
+    <div class="products-grid">
+      {products.map((product) => (
+        <div class={`product-card ${product.featured ? 'featured' : ''}`}>
+          {product.featured && <div class="featured-badge">Najczęściej wybierany</div>}
+          <span class={`tag tag-${product.tagColor}`}>{product.tag}</span>
+          <h3 class="product-name">{product.name}</h3>
+          <p class="product-desc">{product.description}</p>
+          <div class="features">
+            {product.features.map((feature) => (
+              <div class={`feature feature-${product.tagColor}`}>
+                <i class="fa-solid fa-check"></i>
+                {feature}
+              </div>
+            ))}
+          </div>
+          <div class="price">od {product.price} zł <span>+ montaż</span></div>
+          <a href="#" class={`product-btn ${product.featured ? 'filled' : ''}`}>
+            {product.featured ? 'Zamów z montażem' : 'Sprawdź szczegóły'}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

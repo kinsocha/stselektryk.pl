@@ -1,0 +1,92 @@
+---
+---
+
+<style>
+  nav {
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .logo span {
+    color: var(--color-gray-500);
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: none;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--color-gray-600);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-cta {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .nav-cta:hover {
+    background-color: var(--color-primary-dark);
+    color: white;
+  }
+
+  .mobile-menu {
+    font-size: 1.5rem;
+    color: var(--color-gray-600);
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+    .mobile-menu {
+      display: none;
+    }
+  }
+</style>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">Gree <span>Partner</span></div>
+    <div class="nav-links">
+      <a href="#">Klimatyzatory</a>
+      <a href="#">Pompy Ciepła</a>
+      <a href="#" class="nav-cta">Darmowa Wycena</a>
+    </div>
+    <div class="mobile-menu">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+</nav>
